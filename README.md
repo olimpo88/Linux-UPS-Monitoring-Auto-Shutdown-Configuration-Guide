@@ -18,17 +18,43 @@ If you don't have the same model, you should follow the guide for other models.
 
 # Quick Start Guide - Cypress Semiconductor UPS (Voltronic-QS Protocol)
 
-This is a ready-to-use configuration for UPS devices using:
-- **Chip:** Cypress Semiconductor USB to Serial (VendorID: 0665, ProductID: 5161)
+## ⚠️ Important: Check Your UPS ID First
+
+**Before using this quick guide**, verify your UPS ID by running:
+```bash
+lsusb
+```
+
+Look for this **exact** line:
+```
+Bus 001 Device XXX: ID 0665:5161 Cypress Semiconductor USB to Serial
+```
+
+### ✅ If you see `ID 0665:5161` → You can use this quick configuration!
+
+The device number (XXX) doesn't matter, only the ID `0665:5161` needs to match.
+
+### ❌ If you have a different ID → Use the full manual setup
+
+Follow the complete guide instead: [Manual Setup Guide for All Models](MANUAL-SETUP.md)
+
+## About This Configuration
+
+This is a ready-to-use configuration specifically for UPS devices using:
+- **USB Chip:** Cypress Semiconductor USB to Serial
+- **Vendor ID:** 0665
+- **Product ID:** 5161
 - **Protocol:** Voltronic-QS
 - **Driver:** nutdrv_qx
+
 
 ## Compatible Brands/Models
 
 This configuration works with many UPS brands that use Voltronic chipsets:
 - Voltronic Power (OEM)
-- Armac, Blazer, Energy Sistem
+- APC, Armac, Blazer, Energy Sistem
 - Fenton Technologies, GE
+- Lyonn
 - Mustek, Powercool
 - Any UPS that came with "Viewpower" software
 
@@ -39,7 +65,7 @@ Bus XXX Device XXX: ID 0665:5161 Cypress Semiconductor USB to Serial
 
 ---
 
-## Quick Installation (5 minutes)
+## Quick Installation
 
 ### Step 1: Install NUT
 
