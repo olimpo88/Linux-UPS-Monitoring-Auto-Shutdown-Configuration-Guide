@@ -205,7 +205,7 @@ journalctl -f -u nut-monitor
 
 ---
 
-## Testing (Optional)
+## Testing
 
 **WARNING:** Only test if you're prepared for a simulated power event.
 
