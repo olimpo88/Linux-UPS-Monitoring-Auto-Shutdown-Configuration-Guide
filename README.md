@@ -1,6 +1,9 @@
 # Linux-UPS-Monitoring-Auto-Shutdown-Configuration-Guide
 Protect your Linux system from data loss during power outages with automated UPS monitoring and shutdown. This repository provides complete setup instructions for Network UPS Tools (NUT) with smart battery management.
 
+![unnamed (2)](https://github.com/user-attachments/assets/0dfed288-d5bb-4795-afd7-66cb9767e6cf)
+
+
 ✨ Key Features:
 - Automatic shutdown on low battery (customizable 5-20%)
 - Real-time battery level monitoring
@@ -271,3 +274,6 @@ Then restart:
 ```bash
 sudo systemctl restart nut-server nut-monitor
 ```
+
+## Contact 📧
+https://www.linkedin.com/in/peraltaleandro/
