@@ -1,0 +1,26 @@
+#!/bin/bash
+# Wrapper for upssched that converts arguments to environment variables
+
+MESSAGE="$1"
+
+# Extract notification type from message
+if [[ "$MESSAGE" =~ "on battery" ]]; then
+    export NOTIFYTYPE="ONBATT"
+elif [[ "$MESSAGE" =~ "on line power" ]]; then
+    export NOTIFYTYPE="ONLINE"
+elif [[ "$MESSAGE" =~ "battery is low" ]]; then
+    export NOTIFYTYPE="LOWBATT"
+elif [[ "$MESSAGE" =~ "shutdown" ]]; then
+    export NOTIFYTYPE="SHUTDOWN"
+elif [[ "$MESSAGE" =~ "needs to be replaced" ]]; then
+    export NOTIFYTYPE="REPLBATT"
+else
+    export NOTIFYTYPE="UNKNOWN"
+fi
+
+# Extract UPS name (assuming format "UPS name@host ...")
+if [[ "$MESSAGE" =~ UPS\ ([^\ ]+) ]]; then
+    export UPSNAME="${BASH_REMATCH[1]}"
+else
+    export UPSNAME="ups@localhost"
+fi

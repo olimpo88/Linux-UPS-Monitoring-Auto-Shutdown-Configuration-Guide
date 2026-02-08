@@ -1,0 +1,37 @@
+#!/bin/bash
+
+case $1 in
+    shutdown-lowbatt)
+        logger -t upssched "CRITICAL BATTERY - Shutting down in 1 minute"
+        wall "WARNING: UPS battery critical (10%). System will shutdown in 1 minute."
+        sleep 60
+        /sbin/shutdown -h now "UPS battery depleted (10%)"
+        ;;
+    
+    shutdown-onbatt)
+        logger -t upssched "No power for 15 minutes - Shutting down"
+        wall "WARNING: Extended power outage. Shutting down system."
+        /sbin/shutdown -h +1 "Extended power outage"
+        ;;
+    
+    onbatt-message)
+        logger -t upssched "Power failure - Running on battery"
+        wall "NOTICE: Power failure. System running on UPS battery."
+        ;;
+    
+    online-message)
+        logger -t upssched "Power restored"
+        wall "NOTICE: Power restored. Shutdown cancelled."
+        ;;
+    
+    lowbatt-message)
+        logger -t upssched "Low battery detected"
+        wall "WARNING: UPS battery is low. Save your work."
+        ;;
+    
+    *)
+        logger -t upssched "Unknown command: $1"
+        ;;
+esac
+
+exit 0
